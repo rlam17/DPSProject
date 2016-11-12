@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DPSProject</string>
+
+    <string-array name="heroesTemp">
+        <item>Genji</item>
+        <item>Tracer</item>
+        <item>Reaper</item>
+    </string-array>
+</resources>
