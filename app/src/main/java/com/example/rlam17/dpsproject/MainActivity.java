@@ -1,5 +1,6 @@
 package com.example.rlam17.dpsproject;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
             //get data from the view that was clicked
             String data = parent.getItemAtPosition(position).toString();
             //show a toast for now.. or do whatever!
-            Toast.makeText(view.getContext(), data, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(view.getContext(), data, Toast.LENGTH_SHORT).show();
+            Intent hero_selected = new Intent();
+            hero_selected.putExtra("heroChosen", data);
+            startActivity(hero_selected);
         }
     };
 
