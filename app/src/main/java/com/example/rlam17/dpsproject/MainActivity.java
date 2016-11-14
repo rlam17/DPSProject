@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             //get data from the view that was clicked
-            String data = parent.getItemAtPosition(position).toString();
+            //String data = parent.getItemAtPosition(position).toString();
             //show a toast for now.. or do whatever!
             //Toast.makeText(view.getContext(), data, Toast.LENGTH_SHORT).show();
             Intent hero_selected = new Intent();
-            hero_selected.putExtra("heroChosen", data);
+            hero_selected.putExtra("heroChosen", position);
             startActivity(hero_selected);
         }
     };
