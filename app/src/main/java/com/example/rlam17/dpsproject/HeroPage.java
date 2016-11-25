@@ -20,27 +20,20 @@ import java.util.List;
  */
 
 public class HeroPage extends AppCompatActivity {
-    public List<Integer> intTotalStats = new ArrayList<Integer>();
+    public List<Integer> intTotalStats = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hero_page);
+
+
         //grab entire spreadsheet
-        int[][] intSpreadsheet = new int[2][2];
-        //assume int called intPostition passed through to activity
-
-        //this can go in a function
-        List<Integer> intSelected = new ArrayList<Integer>();
-        for(int i = 0; i<intSpreadsheet.length; i++){
-            //intSelected.add(intSpreadsheet[intPosition][i]);
-        }
-
 
         Intent intent = getIntent();
         int heroSlot = intent.getIntExtra("heroChosen",0);
         System.out.println("I am here");
         System.out.println(heroSlot);
-        List<String[]> heroDirectory = new ArrayList<String[]>();
+        List<String[]> heroDirectory = new ArrayList<>();
         AssetManager assetManager = HeroPage.this.getAssets();
 
         try {
