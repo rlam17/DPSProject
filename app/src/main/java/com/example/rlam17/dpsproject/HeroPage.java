@@ -1,17 +1,15 @@
 package com.example.rlam17.dpsproject;
 
-import android.content.res.TypedArray;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
+import com.opencsv.CSVReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,14 +34,37 @@ public class HeroPage extends AppCompatActivity {
         }
 
 
+        List<String[]> heroDirectory = new ArrayList<String[]>();
+        AssetManager assetManager = HeroPage.this.getAssets();
+
+        try {
+            InputStream csvStream = assetManager.open("herodata.csv");
+            InputStreamReader csvStreamReader = new InputStreamReader(csvStream);
+            CSVReader csvReader = new CSVReader(csvStreamReader);
+            String[] line;
+
+            // throw away the header
+            csvReader.readNext();
+
+            while ((line = csvReader.readNext()) != null) {
+                heroDirectory.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(heroDirectory.get(1)[0]);
+        
+        
+
 
         // Table colums are:
         //lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
 
 
-        int[] genji = {28,	3,	3,	28,	3,	4,	50,	1,	0,	0,	120,	1,	200,	0,	0,	0,	0,	0};
-        
 
+
+        
+        /*
         int intLCTotal, intRCTotal, intShiftTotal, intETotal, intQTotal, intL2Total, intHealth, intArmor, intShield, intLC2Total;
         //grab left click numbers
         int intLeftBase = genji[0];
@@ -87,7 +108,8 @@ public class HeroPage extends AppCompatActivity {
         intLC2Total = intLC2Base*intLC2PerClick;
         int intLC2PerSecond = genji[17];
         //spreadsheet parsed
-
+        */
 
     }
+
 }
