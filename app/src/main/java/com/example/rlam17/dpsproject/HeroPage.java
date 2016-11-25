@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by rlam17 on 11/14/2016.
+ * Uses opencsv module
  */
 
 public class HeroPage extends AppCompatActivity {
@@ -63,7 +64,7 @@ public class HeroPage extends AppCompatActivity {
 
 
         // Table colums are:
-        //lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
+        //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
 
 
 
