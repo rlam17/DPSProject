@@ -27,12 +27,16 @@ public class HeroPage extends AppCompatActivity {
         //grab entire spreadsheet
         int[][] intSpreadsheet = new int[2][2];
         //assume int called intPostition passed through to activity
-        /* */
+
         //this can go in a function
         List<Integer> intSelected = new ArrayList<Integer>();
         for(int i = 0; i<intSpreadsheet.length; i++){
-            intSelected.add(intSpreadsheet[intPosition][i]);
+            //intSelected.add(intSpreadsheet[intPosition][i]);
         }
+
+        /*
+
+
         int intLCTotal, intRCTotal, intShiftTotal, intETotal, intQTotal, intL2Total, intHealth, intArmor, intShield, intLC2Total;
         //grab left click numbers
         int intLeftBase = intSelected.get(0);
@@ -76,5 +80,7 @@ public class HeroPage extends AppCompatActivity {
         intLC2Total = intLC2Base*intLC2PerClick;
         int intLC2PerSecond = intSelected.get(17);
         //spreadsheet parsed
+
+        */
     }
 }

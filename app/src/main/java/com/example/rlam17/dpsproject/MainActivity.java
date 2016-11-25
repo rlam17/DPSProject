@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
             //String data = parent.getItemAtPosition(position).toString();
             //show a toast for now.. or do whatever!
             //Toast.makeText(view.getContext(), data, Toast.LENGTH_SHORT).show();
-            Intent hero_selected = new Intent();
+            Intent hero_selected = new Intent(MainActivity.this, HeroPage.class);
             hero_selected.putExtra("heroChosen", position);
             startActivity(hero_selected);
         }
