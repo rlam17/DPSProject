@@ -1,6 +1,7 @@
 package com.example.rlam17.dpsproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,10 @@ public class HeroPage extends AppCompatActivity {
         }
 
 
+        Intent intent = getIntent();
+        int heroSlot = intent.getIntExtra("heroChosen",0);
+        System.out.println("I am here");
+        System.out.println(heroSlot);
         List<String[]> heroDirectory = new ArrayList<String[]>();
         AssetManager assetManager = HeroPage.this.getAssets();
 
@@ -52,9 +57,9 @@ public class HeroPage extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //System.out.println(heroDirectory.get(1)[0]);
+        System.out.println(heroDirectory.get(heroSlot)[0]);
         
-        
+
 
 
         // Table colums are:
