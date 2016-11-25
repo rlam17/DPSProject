@@ -1,5 +1,6 @@
 package com.example.rlam17.dpsproject;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -34,53 +35,59 @@ public class HeroPage extends AppCompatActivity {
             //intSelected.add(intSpreadsheet[intPosition][i]);
         }
 
-        /*
 
+
+        // Table colums are:
+        //lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
+
+
+        int[] genji = {28,	3,	3,	28,	3,	4,	50,	1,	0,	0,	120,	1,	200,	0,	0,	0,	0,	0};
+        
 
         int intLCTotal, intRCTotal, intShiftTotal, intETotal, intQTotal, intL2Total, intHealth, intArmor, intShield, intLC2Total;
         //grab left click numbers
-        int intLeftBase = intSelected.get(0);
-        int intLeftPerClick = intSelected.get(1);
+        int intLeftBase = genji[0];
+        int intLeftPerClick = genji[1];
         intLCTotal = intLeftBase*intLeftPerClick;
-        int intLeftPerSecond = intSelected.get(2);
+        int intLeftPerSecond = genji[2];
 
         //grab right click totals
-        int intRightBase = intSelected.get(3);
-        int intRightPerClick = intSelected.get(4);
+        int intRightBase = genji[3];
+        int intRightPerClick = genji[4];
         intRCTotal = intRightBase*intRightPerClick;
-        int intRightPerSecond = intSelected.get(5);
+        int intRightPerSecond = genji[5];
 
         //grab shift total
-        int intShiftBase = intSelected.get(6);
-        int intShiftSecond = intSelected.get(7);
+        int intShiftBase = genji[6];
+        int intShiftSecond = genji[7];
         intShiftTotal = intShiftBase;
 
         //grab e totals
-        int intEBase = intSelected.get(8);
-        int intETicks = intSelected.get(9);
+        int intEBase = genji[8];
+        int intETicks = genji[9];
         intETotal = intEBase*intETicks;
 
         //grab q totals
-        int intQBase = intSelected.get(10);
-        int intQPerSecond = intSelected.get(11);
+        int intQBase = genji[10];
+        int intQPerSecond = genji[11];
         intQTotal = intQBase*intQPerSecond;
 
         //grab health
-        intHealth = intSelected.get(12);
+        intHealth = genji[12];
 
         //grab armor
-        intArmor = intSelected.get(13);
+        intArmor = genji[13];
 
         //grab shield
-        intShield = intSelected.get(14);
+        intShield = genji[14];
 
         //grab left click 2 (will not be displayed if 0)
-        int intLC2Base = intSelected.get(15);
-        int intLC2PerClick = intSelected.get(16);
+        int intLC2Base = genji[15];
+        int intLC2PerClick = genji[16];
         intLC2Total = intLC2Base*intLC2PerClick;
-        int intLC2PerSecond = intSelected.get(17);
+        int intLC2PerSecond = genji[17];
         //spreadsheet parsed
 
-        */
+
     }
 }
