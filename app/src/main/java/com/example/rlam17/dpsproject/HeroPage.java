@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.opencsv.CSVReader;
 
+import org.apache.commons.net.ftp.FTPClient;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,8 +54,9 @@ public class HeroPage extends AppCompatActivity {
             e.printStackTrace();
         }
         System.out.println(heroDirectory.get(heroSlot)[0]);
-        
 
+
+        FTPClient ftpClient = new FTPClient();
 
 
         // Table colums are:
