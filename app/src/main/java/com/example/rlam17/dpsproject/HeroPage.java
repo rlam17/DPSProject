@@ -18,7 +18,9 @@ import java.util.List;
 
 /**
  * Created by rlam17 on 11/14/2016.
- * Uses opencsv module
+ *
+ * Uses opencsv module to read csv
+ * Uses apache commons for FTPclient
  */
 
 public class HeroPage extends AppCompatActivity {
