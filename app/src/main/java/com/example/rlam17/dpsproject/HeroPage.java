@@ -3,16 +3,22 @@ package com.example.rlam17.dpsproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.opencsv.CSVReader;
 
+import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +29,51 @@ import java.util.List;
  * Uses apache commons for FTPclient
  */
 
+
 public class HeroPage extends AppCompatActivity {
-    public List<Integer> intTotalStats = new ArrayList<>();
+
+    private class DownloadFromMatrix extends AsyncTask<String, String, String>{
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            System.out.println("Hold on to your nutsack, we're going in!");
+        }
+
+        @Override
+        protected String doInBackground(String... serverUrl){
+            try {
+                //File tmpdir = new File("/var/tmp");
+                File file = new File("hero.csv");
+
+                FTPClient ftpClient = new FTPClient();
+                ftpClient.connect("matrix.senecac.on.ca", 22);
+                ftpClient.login("rlam17", "Ray998051575@");
+                //ftpClient.changeWorkingDirectory(serverRoad);
+                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+                BufferedInputStream buffIn;
+                buffIn = new BufferedInputStream(new FileInputStream(file));
+                ftpClient.enterLocalPassiveMode();
+                ftpClient.storeFile("herodata.csv", buffIn);
+                buffIn.close();
+                ftpClient.logout();
+                ftpClient.disconnect();
+            } catch (IOException e) {
+                System.out.println("Something went wrong with FTP");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String file_url) {
+            System.out.println("Holy shit, it actually worked");
+
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -40,8 +89,11 @@ public class HeroPage extends AppCompatActivity {
         List<String[]> heroDirectory = new ArrayList<>();
         AssetManager assetManager = HeroPage.this.getAssets();
 
+        new DownloadFromMatrix().execute("matrix.senecac.on.ca");
+
+
         try {
-            InputStream csvStream = assetManager.open("herodata.csv");
+            InputStream csvStream = assetManager.open("hero.csv");
             InputStreamReader csvStreamReader = new InputStreamReader(csvStream);
             CSVReader csvReader = new CSVReader(csvStreamReader);
             String[] line;
@@ -53,6 +105,7 @@ public class HeroPage extends AppCompatActivity {
                 heroDirectory.add(line);
             }
         } catch (IOException e) {
+            System.out.println("Something went wrong with CSV reading");
             e.printStackTrace();
         }
         System.out.println(heroDirectory.get(heroSlot)[0]);
