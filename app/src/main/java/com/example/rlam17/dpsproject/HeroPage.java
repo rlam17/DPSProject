@@ -13,6 +13,7 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by rlam17 on 11/14/2016.
@@ -32,7 +34,7 @@ import java.util.List;
 
 public class HeroPage extends AppCompatActivity {
 
-    private class DownloadFromMatrix extends AsyncTask<String, String, String>{
+    private class DownloadFromMatrix extends AsyncTask<Void, String, ArrayList<String[]>>{
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
@@ -40,21 +42,44 @@ public class HeroPage extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(String... serverUrl){
+        protected ArrayList<String[]> doInBackground(Void... f_url){
+            ArrayList<String[]> temp= new ArrayList<>();
             try {
-                //File tmpdir = new File("/var/tmp");
-                File file = new File("hero.csv");
+
+                File tmpdir = new File("/var/tmp");
+                File file = new File(tmpdir,"hero.csv");
 
                 FTPClient ftpClient = new FTPClient();
                 ftpClient.connect("matrix.senecac.on.ca", 22);
                 ftpClient.login("rlam17", "Ray998051575@");
-                //ftpClient.changeWorkingDirectory(serverRoad);
                 ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
                 BufferedInputStream buffIn;
                 buffIn = new BufferedInputStream(new FileInputStream(file));
                 ftpClient.enterLocalPassiveMode();
-                ftpClient.storeFile("herodata.csv", buffIn);
+                //ftpClient.storeFile("herodata.csv", buffIn);
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(buffIn));
+
+                reader.readLine();
+
+                String line;
+
+                try{
+                    while ((line = reader.readLine()) != null) {
+                        String[] tokens = line.split(",");
+                        temp.add(tokens);
+                    }
+
+                } catch(IOException e){
+                    System.err.println("Something went wrong with FTP");
+                    System.err.println(e);
+                }finally{
+                    reader.close();
+                }
+
+
+
                 buffIn.close();
                 ftpClient.logout();
                 ftpClient.disconnect();
@@ -62,18 +87,13 @@ public class HeroPage extends AppCompatActivity {
                 System.out.println("Something went wrong with FTP");
                 e.printStackTrace();
             }
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(String file_url) {
-            System.out.println("Holy shit, it actually worked");
-
+            return temp;
         }
     }
 
 
-
+    public List<Integer> intTotalStats = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -86,14 +106,23 @@ public class HeroPage extends AppCompatActivity {
         int heroSlot = intent.getIntExtra("heroChosen",0);
         System.out.println("I am here");
         System.out.println(heroSlot);
-        List<String[]> heroDirectory = new ArrayList<>();
+
         AssetManager assetManager = HeroPage.this.getAssets();
 
-        new DownloadFromMatrix().execute("matrix.senecac.on.ca");
 
-
+        ArrayList<String[]> heroDirectory = null;
         try {
-            InputStream csvStream = assetManager.open("hero.csv");
+            heroDirectory = new DownloadFromMatrix().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        /*
+        try {
+            InputStream csvStream = assetManager.open("/var/tmp/hero.csv");
             InputStreamReader csvStreamReader = new InputStreamReader(csvStream);
             CSVReader csvReader = new CSVReader(csvStreamReader);
             String[] line;
@@ -108,10 +137,11 @@ public class HeroPage extends AppCompatActivity {
             System.out.println("Something went wrong with CSV reading");
             e.printStackTrace();
         }
+        */
         System.out.println(heroDirectory.get(heroSlot)[0]);
 
 
-        FTPClient ftpClient = new FTPClient();
+        //FTPClient ftpClient = new FTPClient();
 
 
         // Table colums are:
@@ -120,7 +150,7 @@ public class HeroPage extends AppCompatActivity {
 
 
 
-        
+
         /*
         int intLCTotal, intRCTotal, intShiftTotal, intETotal, intQTotal, intL2Total, intHealth, intArmor, intShield, intLC2Total;
         //grab left click numbers
