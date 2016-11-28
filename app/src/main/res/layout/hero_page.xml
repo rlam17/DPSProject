@@ -1,7 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="25dp"
+    android:layout_marginBottom="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp">
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Left Mouse Button: "
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/lmbValue"
+            android:gravity="right"
+            android:padding="3dip" />
 
 
-</LinearLayout>
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Right Mouse Button: "
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/rmbValue"
+            android:gravity="right"
+            android:padding="3dip" />
+
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Shift: "
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/shiftValue"
+            android:gravity="right"
+            android:padding="3dip" />
+
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="E: "
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/eValue"
+            android:gravity="right"
+            android:padding="3dip" />
+
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Q: "
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/qValue"
+            android:gravity="right"
+            android:padding="3dip" />
+
+
+    </TableRow>
+
+
+
+</TableLayout>
