@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DPSProject</string>
+    <string name="app_name">Overwatch DPS Calculator</string>
 
     <string-array name="heroesTemp">
         <item>Genji</item>

@@ -23,25 +23,18 @@ public class HeroPage extends AppCompatActivity {
         setContentView(R.layout.hero_page);
 
 
-
         Intent intent = getIntent();
         String[] heroListing = intent.getStringArrayExtra("heroChosen");
-
-
-
-
 
         for(String i : heroListing)
         System.out.println(i);
 
         setTitle(heroListing[0]);
+
+
+
         // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
-
-
-
-
-
 
 
     }
