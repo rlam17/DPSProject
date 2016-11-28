@@ -11,10 +11,8 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import com.opencsv.CSVReader;
 
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
+
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -50,10 +48,11 @@ public class HeroPage extends AppCompatActivity {
 
         @Override
         protected ArrayList<String[]> doInBackground(Void... f_url){
-            ArrayList<String[]> temp= new ArrayList<>();
 
 
-            //File tmpdir = new File("/var/tmp");
+            ArrayList<String[]> temp = new ArrayList<>();
+
+
             JSch jsch = new JSch();
             Session session;
             try{
@@ -93,28 +92,6 @@ public class HeroPage extends AppCompatActivity {
                 System.err.println(e);
             }
 
-
-
-            //BufferedInputStream buffIn;
-            //buffIn = new BufferedInputStream(new FileInputStream(file));
-
-            //ftpClient.storeFile("herodata.csv", buffIn);
-
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(buffIn));
-
-
-
-
-
-
-
-
-
-                //buffIn.close();
-                //ftpClient.logout();
-                //ftpClient.disconnect();
-
-
             return temp;
         }
     }
@@ -131,10 +108,7 @@ public class HeroPage extends AppCompatActivity {
 
         Intent intent = getIntent();
         int heroSlot = intent.getIntExtra("heroChosen",0);
-        System.out.println("I am here");
-        System.out.println(heroSlot);
 
-        AssetManager assetManager = HeroPage.this.getAssets();
 
 
         ArrayList<String[]> heroDirectory = null;
@@ -147,25 +121,12 @@ public class HeroPage extends AppCompatActivity {
         }
 
 
-        /*
-        try {
-            InputStream csvStream = assetManager.open("/var/tmp/hero.csv");
-            InputStreamReader csvStreamReader = new InputStreamReader(csvStream);
-            CSVReader csvReader = new CSVReader(csvStreamReader);
-            String[] line;
 
-            // throw away the header
-            csvReader.readNext();
 
-            while ((line = csvReader.readNext()) != null) {
-                heroDirectory.add(line);
-            }
-        } catch (IOException e) {
-            System.out.println("Something went wrong with CSV reading");
-            e.printStackTrace();
-        }
-        */
-        System.out.println(heroDirectory.get(heroSlot)[0]);
+        String[] heroListing = heroDirectory.get(heroSlot);
+
+        for(int i = 0; i< heroListing.length; i++)
+        System.out.println(heroListing[i]);
 
 
         //FTPClient ftpClient = new FTPClient();
@@ -178,51 +139,7 @@ public class HeroPage extends AppCompatActivity {
 
 
 
-        /*
-        int intLCTotal, intRCTotal, intShiftTotal, intETotal, intQTotal, intL2Total, intHealth, intArmor, intShield, intLC2Total;
-        //grab left click numbers
-        int intLeftBase = genji[0];
-        int intLeftPerClick = genji[1];
-        intLCTotal = intLeftBase*intLeftPerClick;
-        int intLeftPerSecond = genji[2];
 
-        //grab right click totals
-        int intRightBase = genji[3];
-        int intRightPerClick = genji[4];
-        intRCTotal = intRightBase*intRightPerClick;
-        int intRightPerSecond = genji[5];
-
-        //grab shift total
-        int intShiftBase = genji[6];
-        int intShiftSecond = genji[7];
-        intShiftTotal = intShiftBase;
-
-        //grab e totals
-        int intEBase = genji[8];
-        int intETicks = genji[9];
-        intETotal = intEBase*intETicks;
-
-        //grab q totals
-        int intQBase = genji[10];
-        int intQPerSecond = genji[11];
-        intQTotal = intQBase*intQPerSecond;
-
-        //grab health
-        intHealth = genji[12];
-
-        //grab armor
-        intArmor = genji[13];
-
-        //grab shield
-        intShield = genji[14];
-
-        //grab left click 2 (will not be displayed if 0)
-        int intLC2Base = genji[15];
-        int intLC2PerClick = genji[16];
-        intLC2Total = intLC2Base*intLC2PerClick;
-        int intLC2PerSecond = genji[17];
-        //spreadsheet parsed
-        */
 
     }
 
