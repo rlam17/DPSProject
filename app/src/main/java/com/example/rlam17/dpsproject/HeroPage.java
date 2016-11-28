@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -34,6 +35,33 @@ public class HeroPage extends AppCompatActivity {
 
         // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
+
+        TextView has = (TextView)findViewById(R.id.has);
+        String hasString = (String)has.getText();
+
+        TextView health = (TextView)findViewById(R.id.health);
+        health.setText(heroListing[13]);
+
+        String healthString = (String)health.getText();
+
+
+
+        if(!heroListing[14].equals("0")){ //has armor
+            hasString = hasString + "/Armor";
+            healthString = healthString + "/" + heroListing[14];
+        }
+
+
+        if(!heroListing[15].equals("0")){
+            hasString = hasString + "/Shield";
+            healthString = healthString + "/" + heroListing[15];
+        }
+
+        hasString = hasString + ": ";
+
+        has.setText(hasString);
+        health.setText(healthString);
+
 
         TextView lmb = (TextView)findViewById(R.id.lmbValue);
         lmb.setText(heroListing[1]);

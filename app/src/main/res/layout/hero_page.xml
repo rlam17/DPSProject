@@ -7,6 +7,24 @@
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp">
 
+
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:id="@+id/has"
+            android:text="Health"
+            android:padding="6dip" />
+        <TextView
+            android:id="@+id/health"
+            android:gravity="right"
+            android:padding="6dip" />
+
+
+
+
+    </TableRow>
+
     <TableRow>
         <TextView
             android:layout_column="1"
@@ -73,6 +91,13 @@
             android:id="@+id/qValue"
             android:gravity="right"
             android:padding="6dip" />
+
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/summary"/>
 
 
     </TableRow>
