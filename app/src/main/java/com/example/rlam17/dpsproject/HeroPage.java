@@ -1,5 +1,6 @@
 package com.example.rlam17.dpsproject;
 
+import android.app.ActionBar;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -32,7 +33,9 @@ public class HeroPage extends AppCompatActivity {
 
         for(String i : heroListing)
         System.out.println(i);
-        // Table colums are:
+
+        setTitle(heroListing[0]);
+        // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
 
 

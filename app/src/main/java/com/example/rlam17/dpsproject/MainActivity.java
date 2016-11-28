@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
         protected ArrayList<String[]> doInBackground(Void... f_url){
 
 
-            ArrayList<String[]> temp = new ArrayList<>();
+            ArrayList<String[]> temp = new ArrayList<>(); //For return
 
 
             JSch jsch = new JSch();
             Session session;
             try{
+                //Black magic
                 session = jsch.getSession("rlam17", "matrix.senecac.on.ca", 22);
                 session.setConfig("StrictHostKeyChecking", "no");
                 session.setPassword("Ray998051575@");
