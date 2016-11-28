@@ -25,4 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile files('libs/opencsv-3.8.jar')
     compile files('libs/commons-net-3.5.jar')
+    compile files('libs/jsch-0.1.54.jar')
 }

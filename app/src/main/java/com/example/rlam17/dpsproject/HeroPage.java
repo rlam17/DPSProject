@@ -7,18 +7,25 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 import com.opencsv.CSVReader;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,25 +51,24 @@ public class HeroPage extends AppCompatActivity {
         @Override
         protected ArrayList<String[]> doInBackground(Void... f_url){
             ArrayList<String[]> temp= new ArrayList<>();
-            try {
 
-                File tmpdir = new File("/var/tmp");
-                File file = new File(tmpdir,"hero.csv");
 
-                FTPClient ftpClient = new FTPClient();
-                ftpClient.connect("matrix.senecac.on.ca", 22);
-                ftpClient.login("rlam17", "Ray998051575@");
-                ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+            //File tmpdir = new File("/var/tmp");
+            JSch jsch = new JSch();
+            Session session;
+            try{
+                session = jsch.getSession("rlam17", "matrix.senecac.on.ca", 22);
+                session.setConfig("StrictHostKeyChecking", "no");
+                session.setPassword("Ray998051575@");
+                session.connect();
 
-                BufferedInputStream buffIn;
-                buffIn = new BufferedInputStream(new FileInputStream(file));
-                ftpClient.enterLocalPassiveMode();
-                //ftpClient.storeFile("herodata.csv", buffIn);
+                Channel channel = session.openChannel("sftp");
+                channel.connect();
+                ChannelSftp sftpChannel = (ChannelSftp) channel;
+                InputStream is = sftpChannel.get("herodata.csv");
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(buffIn));
-
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                 reader.readLine();
-
                 String line;
 
                 try{
@@ -72,21 +78,42 @@ public class HeroPage extends AppCompatActivity {
                     }
 
                 } catch(IOException e){
-                    System.err.println("Something went wrong with FTP");
+                    System.err.println("Something went wrong with reading file");
                     System.err.println(e);
                 }finally{
                     reader.close();
                 }
 
+                is.close();
 
-
-                buffIn.close();
-                ftpClient.logout();
-                ftpClient.disconnect();
-            } catch (IOException e) {
-                System.out.println("Something went wrong with FTP");
-                e.printStackTrace();
+                sftpChannel.exit();
+                session.disconnect();
+            }catch(Exception e){
+                System.err.println("Something went wrong with FTP");
+                System.err.println(e);
             }
+
+
+
+            //BufferedInputStream buffIn;
+            //buffIn = new BufferedInputStream(new FileInputStream(file));
+
+            //ftpClient.storeFile("herodata.csv", buffIn);
+
+            //BufferedReader reader = new BufferedReader(new InputStreamReader(buffIn));
+
+
+
+
+
+
+
+
+
+                //buffIn.close();
+                //ftpClient.logout();
+                //ftpClient.disconnect();
+
 
             return temp;
         }
