@@ -112,11 +112,10 @@
 
 
     </TableRow>
-    <TableRow>
-        <Button android:id="@+id/editButton"
-            android:text="Edit" />
-    </TableRow>
 
 
+
+    <Button android:id="@+id/editButton"
+        android:text="Edit" />
 </TableLayout>
 

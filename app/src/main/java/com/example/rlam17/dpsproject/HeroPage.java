@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.R.attr.data;
 
 
 /**
@@ -26,7 +30,7 @@ public class HeroPage extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String[] heroListing = intent.getStringArrayExtra("heroChosen");
+        final String[] heroListing = intent.getStringArrayExtra("heroChosen");
 
         for(String i : heroListing)
         System.out.println(i);
@@ -85,6 +89,18 @@ public class HeroPage extends AppCompatActivity {
             lmb2.setVisibility(View.VISIBLE);
             lmb2label.setVisibility(View.VISIBLE);
         }
+
+
+        Button button = (Button)findViewById(R.id.editButton);
+        button.setOnClickListener(new View.OnClickListener(){
+           public void onClick(View v){
+               //Toast.makeText(v.getContext(), "The button is active", Toast.LENGTH_SHORT).show();
+               Intent editCommence = new Intent(HeroPage.this, HeroEdit.class);
+               editCommence.putExtra("editThisHero", heroListing);
+               startActivity(editCommence);
+           }
+        });
     }
+
 
 }
