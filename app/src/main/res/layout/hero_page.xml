@@ -17,7 +17,7 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/health"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
 
 
@@ -32,15 +32,25 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/lmbValue"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
+
+
+
+    </TableRow>
+    <TableRow
+        android:visibility="invisible">
+        <TextView
+            android:layout_column="1"
+            android:id="@+id/lmb2label"
+            android:text="Alternate Left Mouse Button: "
+            android:padding="6dip"
+            android:visibility="gone"/>
         <TextView
             android:id="@+id/lmb2Value"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip"
-            android:visibility="invisible"/>
-
-
+            android:visibility="gone"/>
     </TableRow>
 
     <TableRow>
@@ -50,7 +60,7 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/rmbValue"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
 
 
@@ -63,7 +73,7 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/shiftValue"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
 
 
@@ -76,7 +86,7 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/eValue"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
 
 
@@ -89,11 +99,12 @@
             android:padding="6dip" />
         <TextView
             android:id="@+id/qValue"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="6dip" />
 
 
     </TableRow>
+
 
     <TableRow>
         <TextView

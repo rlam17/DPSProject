@@ -77,6 +77,14 @@ public class HeroPage extends AppCompatActivity {
 
         TextView q = (TextView)findViewById(R.id.qValue);
         q.setText(heroListing[11]);
+
+        if(!heroListing[16].equals("0")){
+            TextView lmb2label = (TextView)findViewById(R.id.lmb2label);
+            TextView lmb2 = (TextView)findViewById(R.id.lmb2Value);
+            lmb2.setText(heroListing[16]);
+            lmb2.setVisibility(View.VISIBLE);
+            lmb2label.setVisibility(View.VISIBLE);
+        }
     }
 
 }
