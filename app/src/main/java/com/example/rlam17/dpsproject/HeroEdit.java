@@ -36,7 +36,7 @@ public class HeroEdit extends AppCompatActivity {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-            System.out.println("Hold on to your nutsack, we're going in!");
+            System.out.println("Hold on to your buttcheeks, we're going in!");
         }
 
         @Override
@@ -193,6 +193,8 @@ public class HeroEdit extends AppCompatActivity {
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
+
+                    //TODO: Where should app go after editing?
                 }
             }
         });
