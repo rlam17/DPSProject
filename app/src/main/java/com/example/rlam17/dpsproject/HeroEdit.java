@@ -9,7 +9,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
+ *
  * Created by rlam17 on 11/29/2016.
+ *
+ * Uses jsch for writing
+ *
  */
 
 public class HeroEdit extends AppCompatActivity {
@@ -78,7 +82,23 @@ public class HeroEdit extends AppCompatActivity {
                     Toast.makeText(v.getContext(), "Please use only numbers",
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(v.getContext(), "TODO: Write to database", Toast.LENGTH_SHORT).show();
+                    // Table columns are:
+                    //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
+                    String input = heroListing[0];
+                    heroListing[13] = heroHealth.getText().toString();
+                    heroListing[14] = heroArmor.getText().toString();
+                    heroListing[15] = heroShield.getText().toString();
+                    heroListing[1] = heroLMB1.getText().toString();
+                    heroListing[16] = heroLMB2.getText().toString();
+                    heroListing[4] = heroRMB.getText().toString();
+                    heroListing[7] = heroShift.getText().toString();
+                    heroListing[9] = heroE.getText().toString();
+                    heroListing[11] = heroQ.getText().toString();
+
+                    for(int i = 1; i < heroListing.length;i++){
+                        input = input + "," + heroListing[i];
+                    }
+                    //System.out.println(input);
                 }
             }
         });
