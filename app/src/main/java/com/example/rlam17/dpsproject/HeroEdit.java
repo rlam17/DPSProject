@@ -3,7 +3,10 @@ package com.example.rlam17.dpsproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by rlam17 on 11/29/2016.
@@ -26,34 +29,59 @@ public class HeroEdit extends AppCompatActivity {
         // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
 
-        EditText heroHealth = (EditText)findViewById(R.id.editHealth);
+        final EditText heroHealth = (EditText)findViewById(R.id.editHealth);
         heroHealth.setText(heroListing[13]);
 
-        EditText heroArmor = (EditText)findViewById(R.id.editArmor);
+        final EditText heroArmor = (EditText)findViewById(R.id.editArmor);
         heroArmor.setText(heroListing[14]);
 
-        EditText heroShield = (EditText)findViewById(R.id.editShield);
+        final EditText heroShield = (EditText)findViewById(R.id.editShield);
         heroShield.setText(heroListing[15]);
 
-        EditText heroLMB1 = (EditText)findViewById(R.id.lmbEdit);
+        final EditText heroLMB1 = (EditText)findViewById(R.id.lmbEdit);
         heroLMB1.setText(heroListing[1]);
 
-        EditText heroLMB2 = (EditText)findViewById(R.id.lmb2edit);
+        final EditText heroLMB2 = (EditText)findViewById(R.id.lmb2edit);
         heroLMB2.setText(heroListing[16]);
 
-        EditText heroRMB = (EditText)findViewById(R.id.rmbEdit);
+        final EditText heroRMB = (EditText)findViewById(R.id.rmbEdit);
         heroRMB.setText(heroListing[4]);
 
-        EditText heroShift = (EditText)findViewById(R.id.shiftEdit);
+        final EditText heroShift = (EditText)findViewById(R.id.shiftEdit);
         heroShift.setText(heroListing[7]);
 
-        EditText heroE = (EditText)findViewById(R.id.eEdit);
+        final EditText heroE = (EditText)findViewById(R.id.eEdit);
         heroE.setText(heroListing[9]);
 
-        EditText heroQ = (EditText)findViewById(R.id.qEdit);
+        final EditText heroQ = (EditText)findViewById(R.id.qEdit);
         heroQ.setText(heroListing[11]);
 
+        Button button = (Button)findViewById(R.id.saveButton);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //Toast.makeText(v.getContext(), "The button is active", Toast.LENGTH_SHORT).show();
+                boolean cleanInput = true;
+                String regex = "\\d+";
+                if(!heroHealth.getText().toString().matches(regex) ||
+                        !heroArmor.getText().toString().matches(regex) ||
+                        !heroShield.getText().toString().matches(regex) ||
+                        !heroLMB1.getText().toString().matches(regex) ||
+                        !heroLMB2.getText().toString().matches(regex) ||
+                        !heroRMB.getText().toString().matches(regex) ||
+                        !heroShift.getText().toString().matches(regex) ||
+                        !heroE.getText().toString().matches(regex) ||
+                        !heroQ.getText().toString().matches(regex)){
+                    cleanInput = false;
+                }
 
+                if(!cleanInput){
+                    Toast.makeText(v.getContext(), "Please use only numbers",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(v.getContext(), "TODO: Write to database", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }
