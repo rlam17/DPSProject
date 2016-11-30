@@ -92,7 +92,9 @@
             android:id="@+id/lmb2edit" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextView
             android:layout_column="1"
             android:text="RMB per hit: "
@@ -155,6 +157,7 @@
 
     </TableRow>
 
-
+    <Button android:id="@+id/saveButton"
+        android:text="Save" />
 
 </TableLayout>
