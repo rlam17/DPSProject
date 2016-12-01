@@ -162,7 +162,6 @@ public class HeroEdit extends AppCompatActivity {
 
                     String command;
                     command = "sed -i -e 's/" + input2 + "/" + input + "/g' herodata.csv";
-
                     try {
                         String response = new WriteToCSV().execute(command).get();
                         System.out.println(response);
@@ -192,11 +191,11 @@ public class HeroEdit extends AppCompatActivity {
         final String[] heroListing = intent.getStringArrayExtra("editThisHero");
         final String[] heroInput = new String[heroListing.length];
         setTitle(heroListing[0] + " edit page");
-        /*
+
         for(int k = 0; k < heroInput.length; k++){
             heroInput[k] = heroListing[k];
         }
-        */
+
 
         //for(String i : heroListing) System.out.println(i);
 

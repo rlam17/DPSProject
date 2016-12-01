@@ -2,6 +2,7 @@ package com.example.rlam17.dpsproject;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -116,6 +117,12 @@ public class HeroPage extends AppCompatActivity {
                 String[] updatedHero = data.getStringArrayExtra("updatedHero");
                 //for(String s:updatedHero)System.out.println(s);
                 populateTable(updatedHero);
+            } else {
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, "Something went wrong with hero editting", duration);
+                toast.show();
             }
         }
     }
