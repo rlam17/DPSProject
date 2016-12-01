@@ -1,29 +1,5 @@
 <resources>
     <string name="app_name">Overwatch DPS Calculator</string>
 
-    <string-array name="heroesTemp">
-        <item>Genji</item>
-        <item>McCree</item>
-        <item>Pharah</item>
-        <item>Reaper</item>
-        <item>Soldier:76</item>
-        <item>Sombra</item>
-        <item>Tracer</item>
-        <item>Bastion</item>
-        <item>Hanzo</item>
-        <item>Junkrat</item>
-        <item>Mei</item>
-        <item>Torbjorn</item>
-        <item>Widowmaker</item>
-        <item>D.Va</item>
-        <item>Reindhart</item>
-        <item>Roadhog</item>
-        <item>Winston</item>
-        <item>Zarya</item>
-        <item>Ana</item>
-        <item>Lucio</item>
-        <item>Mercy</item>
-        <item>Symmetra</item>
-        <item>Zenyatta</item>
-    </string-array>
+
 </resources>

@@ -116,10 +116,15 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        String[] heroNames = new String[heroDirectory.size()];
+        for(int p = 0;p<heroNames.length;p++){
+            heroNames[p] = heroDirectory.get(p)[0];
+        }
 
-        String[] heroesTemp = getResources().getStringArray(R.array.heroesTemp);
+
+        //String[] heroesTemp = getResources().getStringArray(R.array.heroesTemp);
         ListView tempHeroes = (ListView)findViewById(R.id.heroSelect);
-        ArrayAdapter<String> heroList = new ArrayAdapter<String>(this, R.layout.hero_slot, heroesTemp);
+        ArrayAdapter<String> heroList = new ArrayAdapter<>(this, R.layout.hero_slot, heroNames);
 
         tempHeroes.setAdapter(heroList);
         tempHeroes.setOnItemClickListener(heroClickHandler);
