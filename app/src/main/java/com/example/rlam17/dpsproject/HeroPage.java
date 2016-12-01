@@ -30,16 +30,18 @@ public class HeroPage extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        final String[] heroListing = intent.getStringArrayExtra("heroChosen");
+        final String[] heroSelected = intent.getStringArrayExtra("heroChosen");
 
-        for(String i : heroListing)
-        System.out.println(i);
 
-        setTitle(heroListing[0]);
+        setTitle(heroSelected[0]);
 
         // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
 
+        populateTable(heroSelected);
+    }
+
+    void populateTable(final String[] heroListing){
         TextView has = (TextView)findViewById(R.id.has);
         String hasString = (String)has.getText();
 
@@ -93,12 +95,12 @@ public class HeroPage extends AppCompatActivity {
 
         Button button = (Button)findViewById(R.id.editButton);
         button.setOnClickListener(new View.OnClickListener(){
-           public void onClick(View v){
-               //Toast.makeText(v.getContext(), "The button is active", Toast.LENGTH_SHORT).show();
-               Intent editCommence = new Intent(HeroPage.this, HeroEdit.class);
-               editCommence.putExtra("editThisHero", heroListing);
-               startActivity(editCommence);
-           }
+            public void onClick(View v){
+                //Toast.makeText(v.getContext(), "The button is active", Toast.LENGTH_SHORT).show();
+                Intent editCommence = new Intent(HeroPage.this, HeroEdit.class);
+                editCommence.putExtra("editThisHero", heroListing);
+                startActivityForResult(editCommence, 1);
+            }
         });
     }
 

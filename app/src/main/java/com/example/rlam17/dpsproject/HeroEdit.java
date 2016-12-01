@@ -195,6 +195,8 @@ public class HeroEdit extends AppCompatActivity {
                     }
 
                     //TODO: Where should app go after editing?
+
+
                 }
             }
         });

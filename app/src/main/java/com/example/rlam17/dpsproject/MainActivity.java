@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        populateList();
+        //populateList();
 
 
     }
@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
+        super.onResume();
         ListView tempHeroes = (ListView)findViewById(R.id.heroSelect);
         tempHeroes.setAdapter(null);
         populateList();
