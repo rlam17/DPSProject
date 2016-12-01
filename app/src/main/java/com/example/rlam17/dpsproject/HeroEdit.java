@@ -1,5 +1,6 @@
 package com.example.rlam17.dpsproject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -194,9 +195,11 @@ public class HeroEdit extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    //TODO: Where should app go after editing?
 
-
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("updatedHero", heroInput);
+                    setResult(Activity.RESULT_OK ,returnIntent);
+                    finish();
                 }
             }
         });

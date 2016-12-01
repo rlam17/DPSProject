@@ -1,6 +1,7 @@
 package com.example.rlam17.dpsproject;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.R.attr.data;
+import static java.security.AccessController.getContext;
 
 
 /**
@@ -100,9 +102,21 @@ public class HeroPage extends AppCompatActivity {
                 Intent editCommence = new Intent(HeroPage.this, HeroEdit.class);
                 editCommence.putExtra("editThisHero", heroListing);
                 startActivityForResult(editCommence, 1);
+
+
             }
         });
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                //Toast.makeText(getApplicationContext(), "Edit okay!", Toast.LENGTH_SHORT).show();
+                String[] updatedHero = data.getStringArrayExtra("updatedHero");
+                //for(String s:updatedHero)System.out.println(s);
+                populateTable(updatedHero);
+            }
+        }
+    }
 }
