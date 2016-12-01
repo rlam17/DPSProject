@@ -16,11 +16,6 @@ import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -87,25 +82,7 @@ public class HeroEdit extends AppCompatActivity {
     }
 
 
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.hero_edit);
-
-        Intent intent = getIntent();
-        final String[] heroListing = intent.getStringArrayExtra("editThisHero");
-        final String[] heroInput = new String[heroListing.length];
-
-        for(int k = 0; k < heroInput.length; k++){
-            heroInput[k] = heroListing[k];
-        }
-
-        //for(String i : heroListing) System.out.println(i);
-
-        setTitle(heroListing[0] + " edit page");
+    void createForm(final String[] heroListing, final String[] heroInput){
 
         // Table columns are:
         //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
@@ -203,6 +180,31 @@ public class HeroEdit extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.hero_edit);
+
+        Intent intent = getIntent();
+        final String[] heroListing = intent.getStringArrayExtra("editThisHero");
+        final String[] heroInput = new String[heroListing.length];
+        setTitle(heroListing[0] + " edit page");
+        /*
+        for(int k = 0; k < heroInput.length; k++){
+            heroInput[k] = heroListing[k];
+        }
+        */
+
+        //for(String i : heroListing) System.out.println(i);
+
+        createForm(heroListing, heroInput);
+
+
+
+
     }
 
 }
