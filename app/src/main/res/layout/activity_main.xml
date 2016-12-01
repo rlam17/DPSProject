@@ -10,11 +10,21 @@
 
     tools:context="com.example.rlam17.dpsproject.MainActivity">
 
+    <Button
+        android:id="@+id/addButton"
+        android:text="Add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_above="@+id/addButton"
         android:id="@+id/heroSelect"
 
     />
+
+
 </RelativeLayout>
+
+
