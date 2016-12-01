@@ -130,10 +130,18 @@ public class MainActivity extends AppCompatActivity {
 
         //String[] heroesTemp = getResources().getStringArray(R.array.heroesTemp);
         ListView tempHeroes = (ListView)findViewById(R.id.heroSelect);
+
         ArrayAdapter<String> heroList = new ArrayAdapter<>(this, R.layout.hero_slot, heroNames);
 
         tempHeroes.setAdapter(heroList);
         tempHeroes.setOnItemClickListener(heroClickHandler);
+    }
+
+    @Override
+    protected void onResume(){
+        ListView tempHeroes = (ListView)findViewById(R.id.heroSelect);
+        tempHeroes.setAdapter(null);
+        populateList();
     }
 
 }
