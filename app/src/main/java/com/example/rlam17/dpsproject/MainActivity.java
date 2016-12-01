@@ -108,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        populateList();
+
+
+    }
+
+    void populateList(){
         try {
             heroDirectory = new DownloadFromMatrix().execute().get();
         } catch (InterruptedException e) {
@@ -128,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
         tempHeroes.setAdapter(heroList);
         tempHeroes.setOnItemClickListener(heroClickHandler);
-
     }
-
-
 
 }
