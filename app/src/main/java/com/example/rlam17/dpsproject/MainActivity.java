@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -109,7 +110,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //populateList();
+        Button button = (Button)findViewById(R.id.addButton);
+        button.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+                Intent hero_selected = new Intent(MainActivity.this, HeroAdd.class);
+
+                startActivity(hero_selected);
+            }
+        });
 
     }
 
