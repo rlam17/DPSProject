@@ -115,9 +115,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent hero_selected = new Intent(MainActivity.this, HeroAdd.class);
+                Intent addingHero = new Intent(MainActivity.this, HeroAdd.class);
 
-                startActivity(hero_selected);
+                startActivityForResult(addingHero, 2);
             }
         });
 
