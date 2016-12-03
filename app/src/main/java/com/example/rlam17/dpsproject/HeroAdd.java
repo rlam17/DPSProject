@@ -1,5 +1,8 @@
 package com.example.rlam17.dpsproject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,11 +10,77 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+
+import java.util.concurrent.ExecutionException;
+
 /**
  * Created by rlam17 on 12/3/2016.
  */
 
 public class HeroAdd extends AppCompatActivity {
+
+    private class AddToCSV extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            System.out.println("Hold on to your buttcheeks, we're going in!");
+        }
+
+        @Override
+        protected String doInBackground(String... in){
+
+
+            //ArrayList<String[]> temp = new ArrayList<>(); //For return
+
+
+            JSch jsch = new JSch();
+            Session session;
+            try{
+
+
+
+                String s = in[0];
+
+                String command = "echo " + "\"" + s + "\"" + " >> herodata.csv";
+
+
+
+                //Black magic
+                session = jsch.getSession("rlam17", "matrix.senecac.on.ca", 22);
+                session.setConfig("StrictHostKeyChecking", "no");
+                session.setPassword("Ray998051575@");
+                session.connect();
+
+                Channel channel = session.openChannel("sftp");
+                channel.connect();
+                ChannelSftp sftpChannel = (ChannelSftp) channel;
+
+                ChannelExec channelExec = (ChannelExec)session.openChannel("exec");
+
+                channelExec.setCommand(command);
+                channelExec.connect();
+
+
+
+                sftpChannel.exit();
+                channelExec.disconnect();
+                session.disconnect();
+            }catch(Exception e){
+                System.err.println("Something went wrong with adding");
+                System.err.println(e);
+            }
+
+            return "Added!";
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -88,7 +157,21 @@ public class HeroAdd extends AppCompatActivity {
                     }
                     line = line + "," +heroDetails[z];
                 }
-                System.out.println(line);
+
+                try {
+                    String response = new AddToCSV().execute(line).get();
+                    System.out.println(response);
+                } catch (InterruptedException y) {
+                    y.printStackTrace();
+                } catch (ExecutionException y) {
+                    y.printStackTrace();
+                }
+
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK ,returnIntent);
+                finish();
+            } else {
+                //TODO: Something...
             }
         }
     }
