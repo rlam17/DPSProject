@@ -26,6 +26,12 @@ import static java.security.AccessController.getContext;
 
 public class HeroPage extends AppCompatActivity {
 
+
+    void doMath(String[] heroDetails){
+        // Table columns are:
+        //Heroname lmb1	lmb1pc	lmb1ps	rmb	rmbpc	rmbps	shift	shiftps	e	epc	q	qps	health	armor	shield	lmb2	lmb2pc	lmb2ps
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ public class HeroPage extends AppCompatActivity {
 
         populateTable(heroSelected);
     }
+
 
     void populateTable(final String[] heroListing){
         TextView has = (TextView)findViewById(R.id.has);
@@ -107,6 +114,8 @@ public class HeroPage extends AppCompatActivity {
 
             }
         });
+
+        doMath(heroListing);
     }
 
     @Override
