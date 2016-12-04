@@ -64,11 +64,11 @@ public class HeroPage extends AppCompatActivity {
 
         if(Integer.parseInt(heroDetails[11]) != 0){ //Their Q does damage
             if(Integer.parseInt(heroDetails[12]) > 1){ //Their q does damage per second
-                double qdps = Integer.parseInt(heroDetails[4]) * Double.parseDouble(heroDetails[6]);
+                double qdps = Integer.parseInt(heroDetails[11]) * Double.parseDouble(heroDetails[12]);
                 qdps = Math.round(qdps*100.0)/100.0;
                 calculatedDamage = calculatedDamage + "Their ultimate does " + qdps + " damage per second.";
             } else { //Their Q does burst
-                calculatedDamage = calculatedDamage + "Their ultimate " + heroDetails[4] + " burst damage.";
+                calculatedDamage = calculatedDamage + "Their ultimate " + heroDetails[11] + " burst damage.";
             }
             calculatedDamage+= "\n\n";
         }
