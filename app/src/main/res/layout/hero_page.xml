@@ -1,121 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="25dp"
-    android:layout_marginBottom="25dp"
-    android:layout_marginLeft="25dp"
-    android:layout_marginRight="25dp">
+<ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="none"
+    android:layout_weight="1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
 
 
 
-    <TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:id="@+id/has"
+                android:text="Health"
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/health"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="LMB per hit: "
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/lmbValue"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:id="@+id/lmb2label"
+                android:text="Alternate Left Mouse Button: "
+                android:padding="6dip"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/lmb2Value"
+                android:gravity="left"
+                android:padding="6dip"
+                android:visibility="gone"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="RMB per hit: "
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/rmbValue"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Shift: "
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/shiftValue"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="E: "
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/eValue"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Q: "
+                android:padding="6dip" />
+            <TextView
+                android:id="@+id/qValue"
+                android:gravity="left"
+                android:padding="6dip" />
+
+
+        </TableRow>
+
+
+
         <TextView
-            android:layout_column="1"
-            android:id="@+id/has"
-            android:text="Health"
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/health"
-            android:gravity="left"
-            android:padding="6dip" />
+            android:id="@+id/summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+
+            />
 
 
 
 
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:layout_column="1"
-            android:text="LMB per hit: "
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/lmbValue"
-            android:gravity="left"
-            android:padding="6dip" />
 
 
-
-    </TableRow>
-    <TableRow
-        android:visibility="invisible">
-        <TextView
-            android:layout_column="1"
-            android:id="@+id/lmb2label"
-            android:text="Alternate Left Mouse Button: "
-            android:padding="6dip"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/lmb2Value"
-            android:gravity="left"
-            android:padding="6dip"
-            android:visibility="gone"/>
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:layout_column="1"
-            android:text="RMG per hit: "
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/rmbValue"
-            android:gravity="left"
-            android:padding="6dip" />
+        <Button android:id="@+id/editButton"
+            android:text="Edit" />
+    </TableLayout>
 
 
-    </TableRow>
+</ScrollView>
 
-    <TableRow>
-        <TextView
-            android:layout_column="1"
-            android:text="Shift: "
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/shiftValue"
-            android:gravity="left"
-            android:padding="6dip" />
-
-
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:layout_column="1"
-            android:text="E: "
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/eValue"
-            android:gravity="left"
-            android:padding="6dip" />
-
-
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:layout_column="1"
-            android:text="Q: "
-            android:padding="6dip" />
-        <TextView
-            android:id="@+id/qValue"
-            android:gravity="left"
-            android:padding="6dip" />
-
-
-    </TableRow>
-
-
-    <TableRow>
-        <TextView
-            android:id="@+id/summary"/>
-
-
-    </TableRow>
-
-
-
-    <Button android:id="@+id/editButton"
-        android:text="Edit" />
-</TableLayout>
 
