@@ -35,14 +35,14 @@ public class HeroPage extends AppCompatActivity {
 
         String calculatedDamage = heroDetails[0] + " deals ";
 
-        int lmb1dps = Integer.parseInt(heroDetails[1]) * Integer.parseInt(heroDetails[3]);
+        double lmb1dps = Double.parseDouble(heroDetails[1]) * Double.parseDouble(heroDetails[3]);
 
         calculatedDamage = calculatedDamage + lmb1dps + " damage per second with their primary weapon.";
         calculatedDamage += "\n\n";
 
-        if(Integer.parseInt(heroDetails[4]) != 0){ //Their rmb does damage.
+        if(Double.parseDouble(heroDetails[4]) != 0){ //Their rmb does damage.
             if(Double.parseDouble(heroDetails[6]) > 1){ //Their rmb does damage per second and has no cooldown
-                double rmbdps = Integer.parseInt(heroDetails[4]) * Double.parseDouble(heroDetails[6]);
+                double rmbdps = Double.parseDouble(heroDetails[4]) * Double.parseDouble(heroDetails[6]);
                 rmbdps = Math.round(rmbdps*100.0)/100.0;
                 calculatedDamage = calculatedDamage + "Their right click does " + rmbdps + " damage per second as well.";
             } else { //Their rmb has a cooldown
@@ -51,10 +51,10 @@ public class HeroPage extends AppCompatActivity {
             calculatedDamage+= "\n\n";
         }
 
-        if(Integer.parseInt(heroDetails[7]) != 0){//Their shift does damage
+        if(Double.parseDouble(heroDetails[7]) != 0){//Their shift does damage
             if(Double.parseDouble(heroDetails[8]) > 1){ //Their shift does damage per second
                 calculatedDamage = calculatedDamage + "Their shift key does " + (
-                        Integer.parseInt(heroDetails[7]) * Double.parseDouble(heroDetails[8])) + " damage per second as well.";
+                        Double.parseDouble(heroDetails[7]) * Double.parseDouble(heroDetails[8])) + " damage per second as well.";
             }else{ //Their shift does burst with cooldown
                 calculatedDamage = calculatedDamage + "Their shift key does " + heroDetails[7] + " damage as well.";
             }
@@ -62,9 +62,9 @@ public class HeroPage extends AppCompatActivity {
             calculatedDamage+= "\n\n";
         }
 
-        if(Integer.parseInt(heroDetails[11]) != 0){ //Their Q does damage
-            if(Integer.parseInt(heroDetails[12]) > 1){ //Their q does damage per second
-                double qdps = Integer.parseInt(heroDetails[11]) * Double.parseDouble(heroDetails[12]);
+        if(Double.parseDouble(heroDetails[11]) != 0){ //Their Q does damage
+            if(Double.parseDouble(heroDetails[12]) > 1){ //Their q does damage per second
+                double qdps = Double.parseDouble(heroDetails[11]) * Double.parseDouble(heroDetails[12]);
                 qdps = Math.round(qdps*100.0)/100.0;
                 calculatedDamage = calculatedDamage + "Their ultimate does " + qdps + " damage per second.";
             } else { //Their Q does burst
@@ -73,8 +73,8 @@ public class HeroPage extends AppCompatActivity {
             calculatedDamage+= "\n\n";
         }
 
-        if(Integer.parseInt(heroDetails[16]) != 0){ //They have an alternate weapon
-            int lmb2dps = Integer.parseInt(heroDetails[16]) * Integer.parseInt(heroDetails[18]);
+        if(Double.parseDouble(heroDetails[16]) != 0){ //They have an alternate weapon
+            double lmb2dps = Double.parseDouble(heroDetails[16]) * Double.parseDouble(heroDetails[18]);
 
             calculatedDamage = calculatedDamage + "Their alternate weapon does " + lmb2dps + " damage per second.";
         }
