@@ -152,7 +152,7 @@ public class HeroAdd extends AppCompatActivity {
                 String line = heroName.getText().toString();
 
                 for(int z = 1; z < heroDetails.length;z++){
-                    if(heroDetails[z] == null){
+                    if(heroDetails[z] == null || heroDetails[z].isEmpty()){
                         heroDetails[z] = "0";
                     }
                     line = line + "," +heroDetails[z];
